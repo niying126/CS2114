@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="MineSweeperBoardTest (1)" project="MineSweeper" tests="10" started="10" failures="0" errors="1" ignored="0">
+  <testsuite name="Ying [emulator-5554]" time="0.967">
+    <testsuite name="cs2114.minesweeper.MineSweeperBoardTest" time="0.967">
+      <testcase name="testFlagCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.036"/>
+      <testcase name="testGetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testHeight " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testIsGameLost " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.077"/>
+      <testcase name="testIsGameWon " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.052"/>
+      <testcase name="testNumberOfAdjacentMines " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.052"/>
+      <testcase name="testRevealBoard " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078">
+        <error>java.lang.IllegalArgumentException: loadBoardState() was called with row 0 = "0011", but '0' is not a recognized cell state&#13;
+at cs2114.minesweeper.MineSweeperBoardBase.loadBoardState(MineSweeperBoardBase.java:320)&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testRevealBoard(MineSweeperBoardTest.java:118)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</error>
+      </testcase>
+      <testcase name="testSetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testUncoverCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.077"/>
+      <testcase name="testWidth " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.31"/>
+    </testsuite>
+  </testsuite>
+</testrun>
