@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+org.webcat.eclipse.projectlink.preferences.downloadURL=http\://courses.cs.vt.edu/~cs2114/assignments.xml
+org.webcat.eclipse.projectlink.preferences.downloaded_projects=\#Tue Jan 28 20\:08\:40 EST 2014\nhttp\\\://courses.cs.vt.edu/~cs2114/Fall2013/support/support.zip\=CS2114-Support\nhttp\\\://courses.cs.vt.edu/~cs2114/Spr2014/labs/lab02.zip\=Lab02-Polymorphism\nhttp\\\://courses.cs.vt.edu/~cs2114/Fall2013/projects/minesweeper.zip\=MineSweeper\nhttp\\\://courses.cs.vt.edu/~cs2114/Fall2013/support/sofia.zip\=Sofia-Support\nhttp\\\://courses.cs.vt.edu/~cs2114/Spr2014/labs/lab01.zip\=Lab01-Introduction\n
+org.webcat.eclipse.projectlink.preferences.imported_preferences=\#Mon Jan 27 13\:53\:24 EST 2014\nhttp\\\://sofia.cs.vt.edu/courses/cs2114/preferences.epf\=1390848804214\n
+org.webcat.eclipse.projectlink.preferences.submitURL=https\://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution\=VT
+org.webcat.eclipse.projectlink.preferences.urlType=separate

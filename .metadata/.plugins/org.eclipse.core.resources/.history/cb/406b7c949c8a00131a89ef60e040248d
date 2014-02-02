@@ -1,0 +1,85 @@
+package cs2114.minesweeper;
+import student.*;
+public class MineSweeperTest extends student.TestCase
+{
+    private MineSweeperBoard board;
+    public MineSweeperTest()
+    {}
+    public void setUp()
+    {
+        board.loadBoardState("    ",
+                             "OOOO",
+                             "O++O",
+                             "OOOO");
+        System.out.println(board);
+    }
+    public void assertBoard(MineSweeperBoard theBoard, String... expected)
+    {
+        MineSweeperBoard expectedBoard =
+            new MineSweeperBoard(expected[0].length(), expected.length, 0);
+        expectedBoard.loadBoardState(expected);
+        assertEquals(expectedBoard, theBoard); // uses equals() from MineSweeperBoardBase
+    }
+
+    // ----------------------------------------------------------
+    /**
+     * A test case for the setCell() method.
+     */
+    public void testSetCell()
+    {
+        board.setCell(1, 2, MineSweeperCell.FLAGGED_MINE);
+
+        assertBoard(board, "    ",
+                           "OOOO",
+                           "OM+O",
+                           "OOOO");
+    }
+    public void testFlagCell()
+    {
+        board.flagCell(1, 2);
+        assertBoard(board, "    ",
+                           "OOOO",
+                           "OM+O",
+                           "OOOO");
+    }
+    public void testGetCell()
+    {
+        assertEquals("M", board.getCell(1, 2).toString());
+    }
+    public void testHeight()
+    {
+        assertEquals(4, board.height());
+    }
+    public void testIsGameLost()
+    {
+        assertEquals(false, board.isGameLost());
+    }
+    public void testIsGameWon()
+    {
+        assertEquals(false, board.isGameWon());
+    }
+    public void testNumberOfAdjacentMines()
+    {
+        assertEquals(0, board.numberOfAdjacentMines(0, 0));
+    }
+    public void testRevealBoard()
+    {
+        board.revealBoard();
+        assertBoard(board, "    ",
+                           "    ",
+                           " MM ",
+                           "    ");
+    }
+    public void testUncoverCell()
+    {
+        board.uncoverCell(1, 1);
+        assertBoard(board, "    ",
+                           " OOO",
+                           "OM+O",
+                           "OOOO");
+    }
+    public void testWidth()
+    {
+        assertEquals(4, board.width());
+    }
+}

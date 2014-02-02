@@ -1,0 +1,17 @@
+package cs2114.minesweeper;
+import student.*;
+public class MineSweeperTest extends student.TestCase
+{
+    private MineSweeperBoard board;
+    public MineSweeperTest()
+    {}
+    public void setUp()
+    {
+        board.loadBoardState("    ",
+                             "OOOO",
+                             "O++O",
+                             "OOOO");
+        board.setCell(2, 1, MineSweeperCell.FLAGGED_MINE);
+        System.out.println(board);
+    }
+}
