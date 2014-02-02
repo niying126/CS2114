@@ -132,7 +132,7 @@ public class MineSweeperBoard extends MineSweeperBoardBase
         {
             for (int j = 0; j < col; j++)
             {
-                if (getCell(i, j) == MineSweeperCell.FLAG || getCell(i, j) ==
+                if (getCell(i, j) == MineSweeperCell.FLAG || getCell(i, j) !=
                     MineSweeperCell.COVERED_CELL)
                 {
                     return false;
