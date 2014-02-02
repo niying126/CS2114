@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="MineSweeperBoardTest (1)" project="MineSweeper" tests="11" started="11" failures="3" errors="1" ignored="0">
+  <testsuite name="Ying [emulator-5554]" time="0.943">
+    <testsuite name="cs2114.minesweeper.MineSweeperBoardTest" time="0.943">
+      <testcase name="testFlagCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.0"/>
+      <testcase name="testGetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.0">
+        <failure>junit.framework.ComparisonFailure: expected:&lt;[M]&gt; but was:&lt;[COVERED_CELL]&gt;&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testGetCell(MineSweeperBoardTest.java:89)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</failure>
+      </testcase>
+      <testcase name="testHeight " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.0"/>
+      <testcase name="testIsGameLost " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.089"/>
+      <testcase name="testIsGameWon " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.052"/>
+      <testcase name="testNumberOfAdjacentMines " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testRandomBoard " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078">
+        <error>java.lang.ArrayIndexOutOfBoundsException: length=4; index=1347534685&#13;
+at cs2114.minesweeper.MineSweeperBoard.setCell(MineSweeperBoard.java:210)&#13;
+at cs2114.minesweeper.MineSweeperBoard.randomBoard(MineSweeperBoard.java:47)&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testRandomBoard(MineSweeperBoardTest.java:35)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</error>
+      </testcase>
+      <testcase name="testRevealBoard " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.156">
+        <failure>junit.framework.AssertionFailedError: expected:&lt;------&#13;
+|    |&#13;
+|    |&#13;
+| MM |&#13;
+|    |&#13;
+------&#13;
+&gt; but was:&lt;------&#13;
+|    |&#13;
+|11  |&#13;
+| ** |&#13;
+|11  |&#13;
+------&#13;
+&gt;&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testRevealBoard(MineSweeperBoardTest.java:135)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</failure>
+      </testcase>
+      <testcase name="testSetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testUncoverCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078">
+        <failure>junit.framework.AssertionFailedError: expected:&lt;------&#13;
+|    |&#13;
+| OOO|&#13;
+|OM+O|&#13;
+|OOOO|&#13;
+------&#13;
+&gt; but was:&lt;------&#13;
+|    |&#13;
+|O1OO|&#13;
+|O++O|&#13;
+|OOOO|&#13;
+------&#13;
+&gt;&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testUncoverCell(MineSweeperBoardTest.java:149)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</failure>
+      </testcase>
+      <testcase name="testWidth " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.281"/>
+    </testsuite>
+  </testsuite>
+</testrun>

@@ -30,23 +30,19 @@ public class MineSweeperBoard extends MineSweeperBoardBase
         num = n;
         m = new MineSweeperCell[row][col];
         r = new sofia.util.Random();
-    }
-    // ----------------------------------------------------------
-    /**
-     * Create the board.
-     */
-    public void randomBoard()
-    {
         int count = 0;
-        while (count <= num)
+        for (int i = 0; i < row; i++)
         {
-            int i = r.nextInt();
-            int j = r.nextInt();
-            if (getCell(i, j) != MineSweeperCell.MINE)
+            for (int j = 0; j < col; j++)
             {
                 setCell(i, j, MineSweeperCell.COVERED_CELL);
             }
-            else
+        }
+        while (count <= num)
+        {
+            int i = r.nextInt(row);
+            int j = r.nextInt(col);
+            if (getCell(i, j) != MineSweeperCell.MINE)
             {
                 setCell(i, j, MineSweeperCell.MINE);
                 count++;
@@ -68,9 +64,13 @@ public class MineSweeperBoard extends MineSweeperBoardBase
         {
             setCell(x, y, MineSweeperCell.FLAGGED_MINE);
         }
-        else if (getCell(x, y) == MineSweeperCell.FLAG || getCell(x, y) == MineSweeperCell.FLAGGED_MINE)
+        else if (getCell(x, y) == MineSweeperCell.FLAG)
         {
             setCell(x, y, MineSweeperCell.COVERED_CELL);
+        }
+        else if (getCell(x, y) == MineSweeperCell.FLAGGED_MINE)
+        {
+            setCell(x, y, MineSweeperCell.MINE);
         }
     }
     /**
@@ -154,10 +154,11 @@ public class MineSweeperBoard extends MineSweeperBoardBase
         {
             for (int j = y - 1; j < y + 2; j++)
             {
-                if (i > 0 && j > 0 && i < row - 1 && j < col - 1 && i != x
-                    && j != y)
+                if (i >= 0 && j >= 0 && i < row && j < col)
                 {
-                    if (getCell(i, j) == MineSweeperCell.MINE)
+                    if (getCell(i, j) == MineSweeperCell.MINE || getCell(i, j)
+                        == MineSweeperCell.FLAGGED_MINE || getCell(i, j)
+                        == MineSweeperCell.UNCOVERED_MINE)
                     {
                         count++;
                     }
@@ -191,7 +192,8 @@ public class MineSweeperBoard extends MineSweeperBoardBase
         }
         else if (getCell(x, y) == MineSweeperCell.COVERED_CELL)
         {
-            setCell(x, y, MineSweeperCell.adjacentTo(numberOfAdjacentMines(x, y)));
+            setCell(x, y,
+                MineSweeperCell.adjacentTo(numberOfAdjacentMines(x, y)));
         }
     }
     /**
