@@ -152,7 +152,7 @@ public class MineSweeperBoard extends MineSweeperBoardBase
         {
             for (int j = y - 1; j < y + 2; j++)
             {
-                if (i >= 0 && j >= 0 && i < row && j < col &&
+                if (i >= 0 && j >= 0 && i < row && j < col && 
                     (getCell(i, j) == MineSweeperCell.MINE || getCell(i, j)
                     == MineSweeperCell.FLAGGED_MINE || getCell(i, j)
                     == MineSweeperCell.UNCOVERED_MINE))
@@ -179,8 +179,6 @@ public class MineSweeperBoard extends MineSweeperBoardBase
     }
     /**
      * Uncover the specified cell.
-     * @param x the x coordinate
-     * @param y the y coordinate
      */
     public void uncoverCell(int x, int y)
     {
@@ -204,9 +202,6 @@ public class MineSweeperBoard extends MineSweeperBoardBase
     }
     /**
      * Set the contents of the specified cell on this MineSweeperBoard.
-     * @param x the x coordinate
-     * @param y the y coordinate
-     * @param value the MineSweeperCell value
      */
     protected void setCell(int x, int y, MineSweeperCell value)
     {

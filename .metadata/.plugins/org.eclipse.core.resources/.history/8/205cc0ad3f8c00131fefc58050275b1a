@@ -13,6 +13,8 @@ public class MineSweeperBoard extends MineSweeperBoardBase
 {
     private int col;
     private int row;
+    private int num;
+    private Random r;
     private MineSweeperCell[][] m;
     // ----------------------------------------------------------
     /**
@@ -25,8 +27,9 @@ public class MineSweeperBoard extends MineSweeperBoardBase
     {
         col = w;
         row = h;
+        num = n;
         m = new MineSweeperCell[row][col];
-        Random r = new sofia.util.Random();
+        r = new sofia.util.Random();
         int count = 0;
         for (int i = 0; i < row; i++)
         {
@@ -35,7 +38,7 @@ public class MineSweeperBoard extends MineSweeperBoardBase
                 setCell(i, j, MineSweeperCell.COVERED_CELL);
             }
         }
-        while (count < n)
+        while (count <= num)
         {
             int i = r.nextInt(row);
             int j = r.nextInt(col);
@@ -143,7 +146,6 @@ public class MineSweeperBoard extends MineSweeperBoardBase
      * specified cell.
      * @param x the x coordinate
      * @param y the y coordinate
-     * @return the number of adjacent mines
      */
     public int numberOfAdjacentMines(int x, int y)
     {
@@ -152,12 +154,14 @@ public class MineSweeperBoard extends MineSweeperBoardBase
         {
             for (int j = y - 1; j < y + 2; j++)
             {
-                if (i >= 0 && j >= 0 && i < row && j < col &&
-                    (getCell(i, j) == MineSweeperCell.MINE || getCell(i, j)
-                    == MineSweeperCell.FLAGGED_MINE || getCell(i, j)
-                    == MineSweeperCell.UNCOVERED_MINE))
+                if (i >= 0 && j >= 0 && i < row && j < col)
                 {
-                    count++;
+                    if (getCell(i, j) == MineSweeperCell.MINE || getCell(i, j)
+                        == MineSweeperCell.FLAGGED_MINE || getCell(i, j)
+                        == MineSweeperCell.UNCOVERED_MINE)
+                    {
+                        count++;
+                    }
                 }
 
             }
@@ -179,8 +183,6 @@ public class MineSweeperBoard extends MineSweeperBoardBase
     }
     /**
      * Uncover the specified cell.
-     * @param x the x coordinate
-     * @param y the y coordinate
      */
     public void uncoverCell(int x, int y)
     {
@@ -204,9 +206,6 @@ public class MineSweeperBoard extends MineSweeperBoardBase
     }
     /**
      * Set the contents of the specified cell on this MineSweeperBoard.
-     * @param x the x coordinate
-     * @param y the y coordinate
-     * @param value the MineSweeperCell value
      */
     protected void setCell(int x, int y, MineSweeperCell value)
     {
