@@ -1,0 +1,228 @@
+package cs2114.minesweeper;
+import java.util.Random;
+// -------------------------------------------------------------------------
+/**
+ *  A program of sweeper mine board
+ *  The subclass of MineSweeperBoardBase that it declares how to initialize the
+ *  board and how the board works
+ *
+ *  @author niy1987
+ *  @version Jan 31, 2014
+ */
+public class MineSweeperBoard extends MineSweeperBoardBase
+{
+    private int row;
+    private int col;
+    private MineSweeperCell[][] m;
+    // ----------------------------------------------------------
+    /**
+     * Create a new MineSweeperBoard object.
+     * @param w the number of column of the board
+     * @param h the number of rows of the board
+     * @param n the number of mines in the board
+     */
+    public MineSweeperBoard(int h, int w, int n)
+    {
+        row = h;
+        col = w;
+        m = new MineSweeperCell[row][col];
+        Random r = new sofia.util.Random();
+        int count = 0;
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++)
+            {
+                setCell(i, j, MineSweeperCell.COVERED_CELL);
+            }
+        }
+        while (count < n)
+        {
+            int i = r.nextInt(row);
+            int j = r.nextInt(col);
+            if (getCell(i, j) != MineSweeperCell.MINE)
+            {
+                setCell(i, j, MineSweeperCell.MINE);
+                count++;
+            }
+        }
+    }
+    /**
+     * Place or remove a flag from the specified cell.
+     * @param x the x coordinate
+     * @param y the y coordinate
+     */
+    public void flagCell(int x, int y)
+    {
+        if (getCell(x, y) == MineSweeperCell.COVERED_CELL)
+        {
+            setCell(x, y, MineSweeperCell.FLAG);
+        }
+        else if (getCell(x, y) == MineSweeperCell.MINE)
+        {
+            setCell(x, y, MineSweeperCell.FLAGGED_MINE);
+        }
+        else if (getCell(x, y) == MineSweeperCell.FLAG)
+        {
+            setCell(x, y, MineSweeperCell.COVERED_CELL);
+        }
+        else if (getCell(x, y) == MineSweeperCell.FLAGGED_MINE)
+        {
+            setCell(x, y, MineSweeperCell.MINE);
+        }
+    }
+    /**
+     * Get the contents of the specified cell on this MineSweeperBoard.
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @return the contents of the specified cell
+     */
+    public MineSweeperCell getCell(int x, int y)
+    {
+        if (x >= row || x < 0 || y >= col || y < 0)
+        {
+            return MineSweeperCell.INVALID_CELL;
+        }
+        else
+        {
+            return m[x][y];
+        }
+    }
+    /**
+     * Get the number of rows in this MineSweeperBoard.
+     * @return the rows of the board
+     */
+    public int height()
+    {
+        return row;
+    }
+    /**
+     * Determine if the player has lost the current game.
+     * @return the game is lost or not
+     */
+    public boolean isGameLost()
+    {
+        boolean found = false;
+
+        for (int i = 0; i < row; i++)
+        {
+            int j = 0;
+            while (!found && j < col)
+            {
+                if (getCell(i, j) != MineSweeperCell.UNCOVERED_MINE)
+                {
+                    j++;
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+        }
+        return found;
+    }
+    /**
+     * Determine if the player has won the current game.
+     * @return if the game is won or not
+     */
+    public boolean isGameWon()
+    {
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++)
+            {
+                if (getCell(i, j) == MineSweeperCell.FLAG || getCell(i, j) ==
+                    MineSweeperCell.COVERED_CELL || 
+                    getCell(i, j) == MineSweeperCell.UNCOVERED_MINE ||
+                    getCell(i, j) == MineSweeperCell.MINE)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    /**
+     * Count the number of mines that appear in cells that are adjacent to the
+     * specified cell.
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @return the number of adjacent mines
+     */
+    public int numberOfAdjacentMines(int x, int y)
+    {
+        int count = 0;
+        int startX = 0;
+        int endX = 0;
+        int startY = 0;
+        int endY = 0;
+
+        startX = x - 1 < 0 ? 0 : x - 1;
+        endX = x + 2 >= row ? row : x + 2;
+
+        startY = y - 1 < 0 ? 0 : y - 1;
+        endY = y + 2 >= col ? col : y + 2;
+
+        for (int i = startX; i < endX; i++)
+        {
+            for (int j = startY; j < endY; j++)
+            {
+                if (getCell(i, j) == MineSweeperCell.MINE || getCell(i, j)
+                    == MineSweeperCell.FLAGGED_MINE || getCell(i, j)
+                    == MineSweeperCell.UNCOVERED_MINE)
+                {
+                    count++;
+                }
+
+            }
+        }
+        return count;
+    }
+    /**
+     * Uncover all of the cells on the board.
+     */
+    public void revealBoard()
+    {
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++)
+            {
+                uncoverCell(i, j);
+            }
+        }
+    }
+    /**
+     * Uncover the specified cell.
+     * @param x the x coordinate
+     * @param y the y coordinate
+     */
+    public void uncoverCell(int x, int y)
+    {
+        if (getCell(x, y) == MineSweeperCell.MINE)
+        {
+            setCell(x, y, MineSweeperCell.UNCOVERED_MINE);
+        }
+        else if (getCell(x, y) == MineSweeperCell.COVERED_CELL)
+        {
+            setCell(x, y,
+                MineSweeperCell.adjacentTo(numberOfAdjacentMines(x, y)));
+        }
+    }
+    /**
+     * Get the number of columns in this MineSweeperBoard.
+     * @return the number of columns
+     */
+    public int width()
+    {
+        return col;
+    }
+    /**
+     * Set the contents of the specified cell on this MineSweeperBoard.
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @param value the MineSweeperCell value
+     */
+    protected void setCell(int x, int y, MineSweeperCell value)
+    {
+        m[x][y] = value;
+    }
+}

@@ -1,0 +1,6 @@
+package com.example.temp;
+import android.app.Activity;
+public class TempS extends Activity
+{
+
+}

@@ -1,0 +1,7 @@
+package cs2114.temp;
+import android.app.Activity;
+public class TempS extends Activity
+{
+    private EditText tempF;
+    private EditText tempC;
+}

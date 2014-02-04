@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="MineSweeperBoardTest (1)" project="MineSweeper" tests="10" started="10" failures="2" errors="0" ignored="0">
+  <testsuite name="Ying [emulator-5554]" time="0.798">
+    <testsuite name="cs2114.minesweeper.MineSweeperBoardTest" time="0.798">
+      <testcase name="testFlagCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.0">
+        <failure>junit.framework.AssertionFailedError: expected:&lt;------&#13;
+|    |&#13;
+|OOFO|&#13;
+|O+MO|&#13;
+|OOOO|&#13;
+------&#13;
+&gt; but was:&lt;------&#13;
+|    |&#13;
+|FOFO|&#13;
+|O+MO|&#13;
+|OOOO|&#13;
+------&#13;
+&gt;&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testFlagCell(MineSweeperBoardTest.java:80)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</failure>
+      </testcase>
+      <testcase name="testGetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.0"/>
+      <testcase name="testHeight " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.049"/>
+      <testcase name="testIsGameLost " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078">
+        <failure>junit.framework.AssertionFailedError: expected:&lt;true&gt; but was:&lt;false&gt;&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testIsGameLost(MineSweeperBoardTest.java:116)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</failure>
+      </testcase>
+      <testcase name="testIsGameWon " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.052"/>
+      <testcase name="testNumberOfAdjacentMines " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.077"/>
+      <testcase name="testRevealBoard " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testSetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testUncoverCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.077"/>
+      <testcase name="testWidth " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.283"/>
+    </testsuite>
+  </testsuite>
+</testrun>

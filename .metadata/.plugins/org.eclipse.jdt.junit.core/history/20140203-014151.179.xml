@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="MineSweeperBoardTest (1)" project="MineSweeper" tests="11" started="11" failures="0" errors="0" ignored="0">
+  <testsuite name="Ying [emulator-5554]" time="0.812">
+    <testsuite name="cs2114.minesweeper.MineSweeperBoardTest" time="0.812">
+      <testcase name="testFlagCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.011"/>
+      <testcase name="testGetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testHeight " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.052"/>
+      <testcase name="testIsGameLost " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.052"/>
+      <testcase name="testIsGameWon " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.052"/>
+      <testcase name="testMineSweeperBoard " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.077"/>
+      <testcase name="testNumberOfAdjacentMines " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.077"/>
+      <testcase name="testRevealBoard " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testSetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.026"/>
+      <testcase name="testUncoverCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.052"/>
+      <testcase name="testWidth " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.257"/>
+    </testsuite>
+  </testsuite>
+</testrun>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="MineSweeperBoardTest (1)" project="MineSweeper" tests="10" started="10" failures="3" errors="0" ignored="0">
+  <testsuite name="Ying [emulator-5554]" time="1.021">
+    <testsuite name="cs2114.minesweeper.MineSweeperBoardTest" time="1.021">
+      <testcase name="testFlagCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.0">
+        <failure>junit.framework.AssertionFailedError: expected:&lt;OOO&#13;
+OMO&#13;
+O&#13;
+OOO&#13;
+&gt; but was:&lt;OO&#13;
+OMO&#13;
+O&#13;
+OOO&#13;
+&gt;&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testFlagCell(MineSweeperBoardTest.java:73)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</failure>
+      </testcase>
+      <testcase name="testGetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.104">
+        <failure>junit.framework.AssertionFailedError: expected:&lt;MINE&gt; but was:&lt;COVERED_CELL&gt;&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testGetCell(MineSweeperBoardTest.java:86)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</failure>
+      </testcase>
+      <testcase name="testHeight " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.077"/>
+      <testcase name="testIsGameLost " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.102">
+        <failure>junit.framework.AssertionFailedError: expected:&lt;true&gt; but was:&lt;false&gt;&#13;
+at cs2114.minesweeper.MineSweeperBoardTest.testIsGameLost(MineSweeperBoardTest.java:121)&#13;
+at java.lang.reflect.Method.invokeNative(Native Method)&#13;
+at student.TestCase.runBare(TestCase.java:108)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:191)&#13;
+at android.test.AndroidTestRunner.runTest(AndroidTestRunner.java:176)&#13;
+at android.test.InstrumentationTestRunner.onStart(InstrumentationTestRunner.java:554)&#13;
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:1701)&#13;
+
+</failure>
+      </testcase>
+      <testcase name="testIsGameWon " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testNumberOfAdjacentMines " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.051"/>
+      <testcase name="testRevealBoard " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.076"/>
+      <testcase name="testSetCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.077"/>
+      <testcase name="testUncoverCell " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.078"/>
+      <testcase name="testWidth " classname="cs2114.minesweeper.MineSweeperBoardTest" time="0.307"/>
+    </testsuite>
+  </testsuite>
+</testrun>
