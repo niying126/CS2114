@@ -1,13 +1,17 @@
 package sofia.demo.temp;
+import android.widget.Button;
 import android.widget.EditText;
-import sofia.app.*;
-public class TempS
+import sofia.app.Screen;
+public class Temp extends Screen
 {
     private EditText fBox;
     private EditText cBox;
+    private Button clear;
+
     public void initialize()
     {
-
+        fBox.setText("32");
+        cBox.setText("10");
     }
     public void clearClicked()
     {
