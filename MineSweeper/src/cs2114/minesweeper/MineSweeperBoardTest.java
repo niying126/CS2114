@@ -1,4 +1,5 @@
 package cs2114.minesweeper;
+import sofia.util.Random;
 // -------------------------------------------------------------------------
 /**
  *  The test program of the MinSweeperBoard
@@ -8,48 +9,46 @@ package cs2114.minesweeper;
  */
 public class MineSweeperBoardTest extends student.TestCase
 {
-    private MineSweeperBoard board = new MineSweeperBoard(4, 4, 2);
+    private MineSweeperBoard board;
     // ----------------------------------------------------------
     /**
      * Create a new MineSweeperTest object.
      */
     public MineSweeperBoardTest()
-    {}
+    {
+        //the constructor doesn't take any parameter
+    }
+    /**
+     * Initialize board object
+     */
     public void setUp()
     {
-        board.loadBoardState("    ",
-                             "OOOO",
-                             "O++O",
-                             "OOOO");
-        System.out.println(board);
-    }
-    // ----------------------------------------------------------
-    /**
-     * Compare the expected and the real board
-     * @param theBoard The original board
-     * @param expected The expected board
-     */
-    public void assertBoard(MineSweeperBoard theBoard, String... expected)
-    {
-        MineSweeperBoard expectedBoard =
-            new MineSweeperBoard(expected[0].length(), expected.length, 0);
-        expectedBoard.loadBoardState(expected);
-        assertEquals(expectedBoard, theBoard);
-        // uses equals() from MineSweeperBoardBase
+        board = new MineSweeperBoard(4, 4, 2);
     }
 
+    // ----------------------------------------------------------
+    /**
+     * A test case for the constructor.
+     */
+    public void testMineSweeperBoard()
+    {
+        Random.setNextInts(1, 2, 1, 2, 2, 3);
+        MineSweeperBoard realBoard = new MineSweeperBoard(4, 4, 2);
+        MineSweeperBoard expected = new MineSweeperBoard(4, 4, 2);
+        expected.loadBoardState("OOOO",
+            "OOOO",
+            "O+OO",
+            "OO+O");
+        assertEquals(expected, realBoard);
+    }
     // ----------------------------------------------------------
     /**
      * A test case for the setCell() method.
      */
     public void testSetCell()
     {
-        board.setCell(1, 2, MineSweeperCell.FLAGGED_MINE);
-
-        assertBoard(board, "    ",
-                           "OOOO",
-                           "OM+O",
-                           "OOOO");
+        board.setCell(2, 1, MineSweeperCell.FLAGGED_MINE);
+        assertEquals(MineSweeperCell.FLAGGED_MINE, board.getCell(2, 1));
     }
     // ----------------------------------------------------------
     /**
@@ -57,11 +56,21 @@ public class MineSweeperBoardTest extends student.TestCase
      */
     public void testFlagCell()
     {
+        board.loadBoardState("    ",
+            "FOOO",
+            "OM+O",
+            "OOOO");
         board.flagCell(1, 2);
-        assertBoard(board, "    ",
-                           "OOOO",
-                           "OM+O",
+        board.flagCell(0, 1);
+        board.flagCell(2, 1);
+        board.flagCell(2, 2);
+        board.flagCell(0, 0);
+        MineSweeperBoard expected = new MineSweeperBoard(4, 4, 2);
+        expected.loadBoardState("    ",
+                           "OOFO",
+                           "O+MO",
                            "OOOO");
+        assertEquals(expected, board);
     }
     // ----------------------------------------------------------
     /**
@@ -69,7 +78,19 @@ public class MineSweeperBoardTest extends student.TestCase
      */
     public void testGetCell()
     {
-        assertEquals(MineSweeperCell.COVERED_CELL, board.getCell(2, 1));
+        board.loadBoardState("    ",
+            "OOOF",
+            "OM+O",
+            "OOOO");
+        assertEquals(MineSweeperCell.INVALID_CELL, board.getCell(10, 10));
+        assertEquals(MineSweeperCell.INVALID_CELL, board.getCell(-10, -10));
+        assertEquals(MineSweeperCell.INVALID_CELL, board.getCell(-10, 10));
+        assertEquals(MineSweeperCell.INVALID_CELL, board.getCell(10, -10));
+        assertEquals(MineSweeperCell.INVALID_CELL, board.getCell(1, -10));
+        assertEquals(MineSweeperCell.INVALID_CELL, board.getCell(-10, 1));
+        assertEquals(MineSweeperCell.INVALID_CELL, board.getCell(10, 1));
+        assertEquals(MineSweeperCell.INVALID_CELL, board.getCell(1, 10));
+        assertEquals(MineSweeperCell.FLAGGED_MINE, board.getCell(1, 2));
     }
     // ----------------------------------------------------------
     /**
@@ -85,7 +106,16 @@ public class MineSweeperBoardTest extends student.TestCase
      */
     public void testIsGameLost()
     {
+        board.loadBoardState("    ",
+            "OOOO",
+            "O++O",
+            "OOOO");
         assertEquals(false, board.isGameLost());
+        board.loadBoardState("    ",
+            "OOOO",
+            "O*+O",
+            "OOOO");
+        assertEquals(true, board.isGameLost());
     }
     // ----------------------------------------------------------
     /**
@@ -93,7 +123,31 @@ public class MineSweeperBoardTest extends student.TestCase
      */
     public void testIsGameWon()
     {
+        board.loadBoardState("    ",
+            "OOOO",
+            "OMMO",
+            "OOOO");
         assertEquals(false, board.isGameWon());
+        board.loadBoardState("    ",
+            "1221",
+            "FMM1",
+            "1221");
+        assertEquals(false, board.isGameWon());
+        board.loadBoardState("    ",
+            "1221",
+            "1+M1",
+            "1221");
+        assertEquals(false, board.isGameWon());
+        board.loadBoardState("    ",
+            "1221",
+            "1*M1",
+            "1221");
+        assertEquals(false, board.isGameWon());
+        board.loadBoardState("    ",
+                           "1221",
+                           "1MM1",
+                           "1221");
+        assertEquals(true, board.isGameWon());
     }
     // ----------------------------------------------------------
     /**
@@ -101,7 +155,19 @@ public class MineSweeperBoardTest extends student.TestCase
      */
     public void testNumberOfAdjacentMines()
     {
+        board.loadBoardState("    ",
+            "OOOO",
+            "O*MO",
+            "OO+O");
         assertEquals(0, board.numberOfAdjacentMines(0, 0));
+        assertEquals(1, board.numberOfAdjacentMines(0, 1));
+        assertEquals(0, board.numberOfAdjacentMines(1, 0));
+        assertEquals(1, board.numberOfAdjacentMines(0, 3));
+        assertEquals(0, board.numberOfAdjacentMines(3, 0));
+        assertEquals(1, board.numberOfAdjacentMines(3, 1));
+        assertEquals(3, board.numberOfAdjacentMines(1, 3));
+        assertEquals(2, board.numberOfAdjacentMines(2, 1));
+        assertEquals(2, board.numberOfAdjacentMines(3, 3));
     }
     // ----------------------------------------------------------
     /**
@@ -109,6 +175,10 @@ public class MineSweeperBoardTest extends student.TestCase
      */
     public void testRevealBoard()
     {
+        board.loadBoardState("    ",
+            "OOOO",
+            "O++O",
+            "OOOO");
         board.revealBoard();
         MineSweeperBoard expected = new MineSweeperBoard(4, 4, 2);
         expected.loadBoardState("    ",
@@ -123,6 +193,10 @@ public class MineSweeperBoardTest extends student.TestCase
      */
     public void testUncoverCell()
     {
+        board.loadBoardState("    ",
+            "OOOO",
+            "O++O",
+            "OOOO");
         board.uncoverCell(1, 1);
         MineSweeperBoard expected = new MineSweeperBoard(4, 4, 2);
         expected.loadBoardState("    ",
